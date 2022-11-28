@@ -16,17 +16,7 @@
     </head>
     <body>
 
-<script type="text/javascript">
-    Http::fake([
-    'home' => Http::response('Ok', 200, ['Set-Cookie' => 'PVEAuthCookie=PVE%3Aroot@pam%3A63852A48%3A%3AYEbxnFEfFphL6R99OXVVHoJO/Iarc+5nFoo1TFKxXdayChDNp3JesHNi44UlNaJnS8vu9yvYDffMVrDFxPElTY2kqy+MP5MauhnugUsoXrEf9fjc12v8r2Uf9GuZ4RP+iTc7dZtnUsCA8cspnI9EUj6qNxhAxzxD+Mbko72C0f3KcXPdecttCQEj2VBC8mAfqIzPn+EGA47aM2p4uk13C4Bsd0jAMGVyd6zOTPfcdu/CrD6eKl0JCVWy9ABKqItMKuOfy3YIVO2ssutLQ1+ONfvBxB2TeU9k8eDl7wQQ7i0UxSDcWJcUAUwmG5DMmGfhqeSSUVyNK2edAa+i0DviWg%3D%3D; domain=192.168.178.2; Secure'])
-  ]);
-
-  $response = Http::get('home');
-  dump($response->cookies()->getCookieByName('foo')->getValue());
-    
-</script>
-
-<iframe id="frame" src"https://192.168.178.2:8006/">        
+        <iframe id="frame" src"https://192.168.178.2:8006/">        
 
     </body>
 </html>
