@@ -16,8 +16,17 @@
     </head>
     <body>
 
-                
-
+           <script>     
+        await page.addCookie({
+  name: 'Valid-Cookie-Name',
+  value: 'Valid-Cookie-Value',
+  domain: 'localhost',
+  path: '/foo',
+  httponly: true,
+  secure: false,
+  expires: new Date().getTime() + (1000 * 60 * 60),
+});
+        </script>
         <div id="content">
             <iframe width="100%" height="100%" frameborder="0" src="https://192.168.178.2:8006">
         </div>
