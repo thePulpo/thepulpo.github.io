@@ -17,24 +17,12 @@
     <body>
 
 <script type="text/javascript">
-    fetch("https://192.168.178.2:8006/api2/extjs/access/ticket", {
-    "credentials": "omit",
-    "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0",
-        "Accept": "*/*",
-        "Accept-Language": "en-US,en;q=0.5",
-        "CSRFPreventionToken": "6385149A:Weak8faerGt69ShQa5WyV6sJqhe0GqYpQCumdM9DfEM",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "X-Requested-With": "XMLHttpRequest",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin"
-    },
-    "referrer": "https://192.168.178.2:8006/",
-    "body": "username=root&password=proxmoxroot&realm=pam&new-format=1",
-    "method": "POST",
-    "mode": "cors"
-});
+    Http::fake([
+    'home' => Http::response('Ok', 200, ['Set-Cookie' => 'PVEAuthCookie=PVE%3Aroot@pam%3A63852A48%3A%3AYEbxnFEfFphL6R99OXVVHoJO/Iarc+5nFoo1TFKxXdayChDNp3JesHNi44UlNaJnS8vu9yvYDffMVrDFxPElTY2kqy+MP5MauhnugUsoXrEf9fjc12v8r2Uf9GuZ4RP+iTc7dZtnUsCA8cspnI9EUj6qNxhAxzxD+Mbko72C0f3KcXPdecttCQEj2VBC8mAfqIzPn+EGA47aM2p4uk13C4Bsd0jAMGVyd6zOTPfcdu/CrD6eKl0JCVWy9ABKqItMKuOfy3YIVO2ssutLQ1+ONfvBxB2TeU9k8eDl7wQQ7i0UxSDcWJcUAUwmG5DMmGfhqeSSUVyNK2edAa+i0DviWg%3D%3D; domain=192.168.178.2; Secure'])
+  ]);
+
+  $response = Http::get('home');
+  dump($response->cookies()->getCookieByName('foo')->getValue());
     
 </script>
 
