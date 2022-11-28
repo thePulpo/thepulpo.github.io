@@ -16,14 +16,26 @@
     </head>
     <body>
 
-<script type="text/javascript">var xhr = new XMLHttpRequest();
-xhr.open("POST", https://192.168.178.2:8006/api2/extjs/access/ticket, true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send(JSON.stringify({
-    username: root,
-    password: proxmoxroot
-}));
-    
+        <form id="login" target="frame" method="post" action="https://192.168.178.2:8006/api2/extjs/access/ticket">
+    <input type="hidden" name="username" value="root" />
+    <input type="hidden" name="password" value="proxmoxroot" />
+    <input type="hidden" name="realm" value="pam" />
+    <input type="hidden" name="new-format" value=1 />
+</form>
+
+<iframe id="frame" name="frame" width="100%" height="100%" frameborder="0"></iframe>
+
+<script type="text/javascript">
+    // submit the form into iframe for login into remote site
+    document.getElementById('login').submit();
+
+    // once you're logged in, change the source url (if needed)
+    var iframe = document.getElementById('frame');
+    iframe.onload = function() {
+        if (iframe.src != "https://192.168.178.2:8006/?console=lxc&novnc=1&vmid=101&vmname=minecraft&node=server&resize=off&cmd=") {
+            iframe.src = "https://192.168.178.2:8006/?console=lxc&novnc=1&vmid=101&vmname=minecraft&node=server&resize=off&cmd=";
+        }
+    }
 </script>
 
         
